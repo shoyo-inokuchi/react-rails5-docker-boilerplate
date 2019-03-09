@@ -29,9 +29,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 # Use ActiveAdmin
-gem 'devise', '> 4.x'
-gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'activeadmin', '~> 1.4', '>= 1.4.3'
+gem 'inherited_resources', '~> 1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
