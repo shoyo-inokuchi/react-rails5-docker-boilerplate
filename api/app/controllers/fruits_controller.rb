@@ -10,7 +10,7 @@ class FruitsController < ApiController
   # GET /fruits/1
   def show
     @fruit = Fruit.find(params[:id])
-    render json: @fruit.to_json(:only => [:name, :price])
+    render json: @fruit.to_json(only: [:name, :price])
   end
 
   # POST /fruits
