@@ -1,16 +1,16 @@
-class FruitsController < ApplicationController
+class FruitsController < ApiController
   before_action :set_fruit, only: [:show, :update, :destroy]
 
   # GET /fruits
   def index
-    @fruits = Fruit.all
-
-    render json: @fruits
+    @fruits = Fruit.select("id, name").all
+    render json: @fruits.to_json
   end
 
   # GET /fruits/1
   def show
-    render json: @fruit
+    @fruit = Fruit.find(params[:id])
+    render json: @fruit.to_json(:only => [:name, :price])
   end
 
   # POST /fruits
