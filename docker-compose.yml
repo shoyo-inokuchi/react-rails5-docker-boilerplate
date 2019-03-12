@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   db:
@@ -7,23 +7,25 @@ services:
       - ./api/tmp/db:/var/lib/postgresql/data
 
   api:
-    build: api
+    build: ./api
     volumes:
       - ./api:/docker-api
-    environment:
-      - PORT=3001
+    command: >
+      bash -c "rm -f tmp/pids/server.pid
+      && bundle exec rails s -p 3001 -b '0.0.0.0'"
     ports:
       - "3001:3001"
     depends_on:
       - db
 
   client:
-    build: client
+    build: 
+      context: ./client
+      target: builder
     volumes:
       - ./client:/docker-client
       - node-modules:/docker-client/node_modules
-    environment:
-      - NODE_ENV=development
+    command: ["npm", "start"]
     ports:
       - "3000:3000"
     depends_on:
