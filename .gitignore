@@ -5,8 +5,8 @@
 # Ignore all logfiles and tempfiles.
 /api/log/*
 /api/tmp/*
-!/log/.keep
-!/tmp/.keep
+!/api/log/.keep
+!/api/tmp/.keep
 
 # Ignore uploaded files in development
 /api/storage/*
